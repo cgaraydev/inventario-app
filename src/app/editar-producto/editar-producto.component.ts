@@ -24,4 +24,21 @@ export class EditarProductoComponent {
     );
   }
 
+  onSubmit() {
+    this.guardarProducto();
+  }
+
+  guardarProducto() {
+    this.productoServicio.guardarProducto(this.id, this.producto).subscribe(
+      {
+        next: (datos) => this.irProductoLista(),
+        error: (error) => console.log(error)
+      }
+    );
+  }
+
+  irProductoLista() {
+    this.enrutador.navigate(['/productos']);
+  }
+
 }
